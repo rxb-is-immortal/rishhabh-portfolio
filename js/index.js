@@ -9,7 +9,7 @@ if (history.scrollRestoration) {
   history.scrollRestoration = mustSkip ? 'auto' : 'manual';
 }
 
-const isMobile = navigator.maxTouchPoints > 1;
+const isMobile = document.documentElement.classList.contains('is-mobile') || (navigator.maxTouchPoints > 1);
 const isSlowHardware = isMobile || (navigator.hardwareConcurrency || 8) <= 4;
 
 let lastMouseX = window.innerWidth / 2;
@@ -839,7 +839,7 @@ function setupAboutSection() {
   
   const photo = photoWrap.querySelector('.about-photo');
   function initPhotoScroll() {
-    
+    const isMob = isMobileViewport();
     var tl = gsap.timeline({
       scrollTrigger: {
         trigger: photoWrap,
@@ -849,7 +849,11 @@ function setupAboutSection() {
       },
     });
     
-    tl.fromTo(photo, { y: '-50%' }, { y: '50%', ease: 'none' }, 0);
+    if (isMob) {
+      tl.fromTo(photo, { y: '-10%' }, { y: '10%', ease: 'none' }, 0);
+    } else {
+      tl.fromTo(photo, { y: '-50%' }, { y: '50%', ease: 'none' }, 0);
+    }
     
     tl.fromTo(photo, { opacity: 0, filter: 'blur(20px)' }, { opacity: 1, filter: 'blur(0px)', ease: 'none', duration: 0.3 }, 0);
   }

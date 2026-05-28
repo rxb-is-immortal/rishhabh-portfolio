@@ -1799,9 +1799,13 @@ a.chr-hover {
 }
 
 @media (max-width: 1024px) {
+  .scroll-wrap {
+    height: 180vh;
+  }
+
   /* About section collapse */
   .about {
-    padding: 12vh 4rem 20vh;
+    padding: 12vh 4rem 10vh;
   }
   .about-text {
     width: 100%;
@@ -1824,15 +1828,18 @@ a.chr-hover {
     top: auto;
     margin-top: 6vh;
     width: 100%;
+    overflow: hidden;
+    border-radius: 140px 140px 0 0;
   }
   .about-photo {
     width: 100%;
-    border-radius: 140px 140px 0 0;
+    border-radius: 0;
+    transform: scale(1.2);
   }
 
   /* Projects section collapse */
   .projects {
-    padding: 35vh 0 10vh;
+    padding: 10vh 0 8vh;
     z-index: 30030;
     position: relative;
   }
@@ -1866,7 +1873,18 @@ a.chr-hover {
     display: none !important;
   }
 
+  /* Hide fluid line and hero line on mobile/tablet */
+  .fluid-line-svg {
+    display: none !important;
+  }
+  .hero-line {
+    display: none !important;
+  }
+
   /* Skills section collapse */
+  .skills {
+    padding-bottom: 10vh;
+  }
   .skills-inner {
     flex-direction: column;
   }
@@ -1874,17 +1892,20 @@ a.chr-hover {
     position: relative;
     width: 100%;
     height: auto;
-    padding: 8vh 4rem 3vh;
+    padding: 6vh 4rem 2vh;
   }
   .skills-right {
     width: 100%;
-    padding: 0 4rem 15vh;
+    padding: 0 4rem 10vh;
   }
   .skills-arrow {
     font-size: clamp(4rem, 20vw, 7rem);
   }
 
   /* Agency section collapse */
+  .agency {
+    padding-bottom: 10vh;
+  }
   .agency-inner {
     flex-direction: column;
   }
@@ -1893,12 +1914,12 @@ a.chr-hover {
     position: relative;
     width: 100%;
     height: auto;
-    padding: 8vh 4rem 3vh;
+    padding: 6vh 4rem 2vh;
   }
 
   .agency-right {
     width: 100%;
-    padding: 0 4rem 15vh;
+    padding: 0 4rem 10vh;
   }
 
   .agency-text {
@@ -1916,12 +1937,116 @@ a.chr-hover {
   .scroll-pct {
     display: none;
   }
+
+  /* Homepage Contact Section Mobile Relative Flow */
+  .contact {
+    min-height: auto !important;
+    height: auto !important;
+    padding: 8vh 4rem 8vh !important;
+  }
+  .contact-pin {
+    position: relative !important;
+    height: auto !important;
+  }
+  .contact-title {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    text-align: center !important;
+    margin-bottom: 3rem !important;
+    font-size: clamp(3rem, 10vw, 5rem) !important;
+  }
+  .contact-dispo {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    transform: none !important;
+    margin-bottom: 2.5rem !important;
+    text-align: center !important;
+  }
+  #contact-dispo, #contact-dispo-2 {
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+  }
+  .contact-bottom {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin-top: 4rem !important;
+    width: 100% !important;
+  }
+
+  /* Project Detail Horizontal Gallery */
+  .project-detail {
+    overflow-y: auto;
+  }
+  .detail-info {
+    width: 100%;
+    height: auto;
+    padding: 6rem 4rem 2rem;
+  }
+  .detail-gallery-wrap {
+    position: relative;
+    width: 100%;
+    height: auto;
+    top: auto;
+    right: auto;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    padding: 0 4rem 3rem !important;
+  }
+  .detail-thumbs {
+    width: 100% !important;
+    height: auto !important;
+    overflow-y: visible !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .detail-thumbs-inner {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.8rem !important;
+    padding: 1rem 0 !important;
+    width: max-content !important;
+    transform: none !important;
+  }
+  .detail-thumbs-inner img {
+    width: 80px !important;
+    height: 60px !important;
+    object-fit: cover !important;
+  }
+  .detail-selected {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 35vh !important;
+    padding: 0 !important;
+  }
+  .detail-selected img {
+    max-height: 60vh !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    border-radius: 12px !important;
+  }
+  .detail-back {
+    top: 2rem;
+    left: 4rem;
+  }
+
+  /* Footer dynamic height */
+  .footer {
+    height: 100dvh !important;
+  }
 }
 
 @media (max-width: 768px) {
-
-  
-  
   .hero {
     height: 100dvh;
   }
@@ -1937,12 +2062,6 @@ a.chr-hover {
     max-width: calc(100vw - 3rem);
   }
 
-  .hero-line {
-    bottom: calc(1.5rem + 2.8rem);
-    left: 1.5rem;
-    right: 1.5rem;
-  }
-
   .hero-bar {
     bottom: 1.5rem;
     left: 1.5rem;
@@ -1954,10 +2073,12 @@ a.chr-hover {
     font-size: 0.9rem;
   }
 
-  
   .about {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 8vh 1.5rem 8vh;
+  }
+
+  .projects {
+    padding: 8vh 0 8vh;
   }
 
   .projects-list {
@@ -1966,23 +2087,25 @@ a.chr-hover {
   }
 
   .skills-left {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 6vh 1.5rem 2vh;
+  }
+  .skills-text {
+    font-size: clamp(1.4rem, 5vw, 1.8rem) !important;
   }
 
   .skills-right {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 0 1.5rem 8vh;
   }
 
   .agency-left {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 6vh 1.5rem 2vh;
+  }
+  .agency-title {
+    font-size: clamp(2rem, 8vw, 3rem) !important;
   }
 
   .agency-right {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 0 1.5rem 8vh;
   }
 
   .agency-services {
@@ -1994,14 +2117,12 @@ a.chr-hover {
     gap: 1rem;
   }
 
-  
+  .contact {
+    padding: 8vh 1.5rem 8vh !important;
+  }
   .contact-title {
-    font-size: clamp(3.5rem, 15vw, 6rem);
-    top: 15%;
-    left: 50%;
-    width: 100%;
-    text-align: center;
-    transform: translateX(-50%) !important;
+    font-size: clamp(3rem, 12vw, 4.5rem) !important;
+    margin-bottom: 2rem !important;
   }
 
   .contact-frame {
@@ -2009,19 +2130,8 @@ a.chr-hover {
   }
 
   .contact-dispo {
-    width: 85%;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    text-align: center;
-  }
-
-  #contact-dispo {
-    top: 36%;
-  }
-
-  #contact-dispo-2 {
-    top: 54%;
-    right: auto;
+    width: 100%;
+    margin-bottom: 2rem !important;
   }
 
   .contact-dispo p {
@@ -2031,34 +2141,19 @@ a.chr-hover {
   }
 
   .contact-bottom {
-    left: 50%;
-    transform: translateX(-50%) !important;
-    bottom: 8vh;
-    align-items: center;
-    width: 100%;
+    margin-top: 3rem !important;
   }
 
   .contact-socials {
     align-items: center;
   }
 
-  
-  .project-detail {
-    overflow-y: auto;
-  }
-
   .detail-info {
-    width: 100%;
-    height: auto;
     padding: 5rem 1.5rem 2rem;
   }
 
   .detail-gallery-wrap {
-    position: relative;
-    width: 100%;
-    height: auto;
-    top: auto;
-    right: auto;
+    padding: 0 1.5rem 3rem !important;
   }
 
   .detail-back {
@@ -2066,20 +2161,6 @@ a.chr-hover {
     left: 1.5rem;
   }
 
-  .detail-thumbs {
-    width: 18%;
-  }
-
-  
-  .scroll-timeline {
-    display: none;
-  }
-
-  .scroll-pct {
-    display: none;
-  }
-
-  
   .footer-top {
     position: absolute;
     inset: 0;
@@ -2094,7 +2175,6 @@ a.chr-hover {
   }
 
   .footer-top-col:nth-child(1) {
-    
     top: 60vh;
     left: 50%;
     transform: translateX(-50%);
@@ -2104,7 +2184,6 @@ a.chr-hover {
   }
 
   .footer-top-col:nth-child(2) {
-    
     top: 2rem;
     right: 2rem;
     align-items: flex-end;
@@ -2112,7 +2191,6 @@ a.chr-hover {
   }
 
   .footer-top-col:nth-child(3) {
-    
     top: 2rem;
     left: 2rem;
     align-items: flex-start;
@@ -2128,13 +2206,338 @@ a.chr-hover {
     width: max-content;
     overflow: visible;
   }
-}
 
-@media (max-width: 1200px) {
-  .footer-ascii.right {
-    display: none !important;
+  .footer-name-luke {
+    line-height: 1.0 !important;
+  }
+  .footer-name {
+    bottom: 1.5rem !important;
   }
 }
+
+/* Forced Viewport Class support fallback overrides (applies forced styles on desktop) */
+html.is-mobile .scroll-wrap,
+html.is-tablet .scroll-wrap {
+  height: 180vh !important;
+}
+
+html.is-mobile .about,
+html.is-tablet .about {
+  padding: 12vh 4rem 10vh !important;
+}
+html.is-mobile .about-photo-wrap,
+html.is-tablet .about-photo-wrap {
+  position: relative !important;
+  right: auto !important;
+  top: auto !important;
+  margin-top: 6vh !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  border-radius: 140px 140px 0 0 !important;
+}
+html.is-mobile .about-photo,
+html.is-tablet .about-photo {
+  width: 100% !important;
+  border-radius: 0 !important;
+  transform: scale(1.2) !important;
+}
+
+html.is-mobile .projects,
+html.is-tablet .projects {
+  padding: 10vh 0 8vh !important;
+  z-index: 30030 !important;
+  position: relative !important;
+}
+html.is-mobile .projects-inner,
+html.is-tablet .projects-inner {
+  flex-direction: column !important;
+}
+html.is-mobile .projects-list,
+html.is-tablet .projects-list {
+  position: relative !important;
+  top: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  padding-left: 4rem !important;
+  padding-right: 4rem !important;
+}
+html.is-mobile .proj-item,
+html.is-tablet .proj-item {
+  white-space: normal !important;
+  font-size: clamp(1.6rem, 7vw, 2.5rem) !important;
+}
+html.is-mobile .proj-preview,
+html.is-tablet .proj-preview {
+  display: none !important;
+}
+html.is-mobile .proj-cursor,
+html.is-tablet .proj-cursor {
+  display: none !important;
+}
+
+html.is-mobile .circle-gallery,
+html.is-tablet .circle-gallery {
+  display: none !important;
+}
+html.is-mobile .cg-phrase,
+html.is-tablet .cg-phrase {
+  display: none !important;
+}
+
+html.is-mobile .fluid-line-svg,
+html.is-tablet .fluid-line-svg {
+  display: none !important;
+}
+html.is-mobile .hero-line,
+html.is-tablet .hero-line {
+  display: none !important;
+}
+
+html.is-mobile .skills,
+html.is-tablet .skills {
+  padding-bottom: 10vh !important;
+}
+html.is-mobile .skills-inner,
+html.is-tablet .skills-inner {
+  flex-direction: column !important;
+}
+html.is-mobile .skills-left,
+html.is-tablet .skills-left {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  padding: 6vh 4rem 2vh !important;
+}
+html.is-mobile .skills-right,
+html.is-tablet .skills-right {
+  width: 100% !important;
+  padding: 0 4rem 10vh !important;
+}
+html.is-mobile .skills-arrow,
+html.is-tablet .skills-arrow {
+  font-size: clamp(4rem, 20vw, 7rem) !important;
+}
+
+html.is-mobile .agency,
+html.is-tablet .agency {
+  padding-bottom: 10vh !important;
+}
+html.is-mobile .agency-inner,
+html.is-tablet .agency-inner {
+  flex-direction: column !important;
+}
+html.is-mobile .agency-left,
+html.is-tablet .agency-left {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  padding: 6vh 4rem 2vh !important;
+}
+html.is-mobile .agency-right,
+html.is-tablet .agency-right {
+  width: 100% !important;
+  padding: 0 4rem 10vh !important;
+}
+html.is-mobile .agency-text,
+html.is-tablet .agency-text {
+  max-width: 100% !important;
+}
+html.is-mobile .agency-action,
+html.is-tablet .agency-action {
+  margin-bottom: 5vh !important;
+}
+
+html.is-mobile .scroll-timeline,
+html.is-tablet .scroll-timeline {
+  display: none !important;
+}
+html.is-mobile .scroll-pct,
+html.is-tablet .scroll-pct {
+  display: none !important;
+}
+
+html.is-mobile .contact,
+html.is-tablet .contact {
+  min-height: auto !important;
+  height: auto !important;
+  padding: 8vh 4rem 8vh !important;
+}
+html.is-mobile .contact-pin,
+html.is-tablet .contact-pin {
+  position: relative !important;
+  height: auto !important;
+}
+html.is-mobile .contact-title,
+html.is-tablet .contact-title {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  text-align: center !important;
+  margin-bottom: 3rem !important;
+  font-size: clamp(3rem, 10vw, 5rem) !important;
+}
+html.is-mobile .contact-dispo,
+html.is-tablet .contact-dispo {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  width: 100% !important;
+  transform: none !important;
+  margin-bottom: 2.5rem !important;
+  text-align: center !important;
+}
+html.is-mobile #contact-dispo,
+html.is-tablet #contact-dispo,
+html.is-mobile #contact-dispo-2,
+html.is-tablet #contact-dispo-2 {
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+}
+html.is-mobile .contact-bottom,
+html.is-tablet .contact-bottom {
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
+  margin-top: 4rem !important;
+  width: 100% !important;
+}
+
+html.is-mobile .project-detail,
+html.is-tablet .project-detail {
+  overflow-y: auto !important;
+}
+html.is-mobile .detail-info,
+html.is-tablet .detail-info {
+  width: 100% !important;
+  height: auto !important;
+  padding: 6rem 4rem 2rem !important;
+}
+html.is-mobile .detail-gallery-wrap,
+html.is-tablet .detail-gallery-wrap {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  top: auto !important;
+  right: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.5rem !important;
+  padding: 0 4rem 3rem !important;
+}
+html.is-mobile .detail-thumbs,
+html.is-tablet .detail-thumbs {
+  width: 100% !important;
+  height: auto !important;
+  overflow-y: visible !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+html.is-mobile .detail-thumbs-inner,
+html.is-tablet .detail-thumbs-inner {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 0.8rem !important;
+  padding: 1rem 0 !important;
+  width: max-content !important;
+  transform: none !important;
+}
+html.is-mobile .detail-thumbs-inner img,
+html.is-tablet .detail-thumbs-inner img {
+  width: 80px !important;
+  height: 60px !important;
+  object-fit: cover !important;
+}
+html.is-mobile .detail-selected,
+html.is-tablet .detail-selected {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 35vh !important;
+  padding: 0 !important;
+}
+html.is-mobile .detail-selected img,
+html.is-tablet .detail-selected img {
+  max-height: 60vh !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  border-radius: 12px !important;
+}
+html.is-mobile .detail-back,
+html.is-tablet .detail-back {
+  top: 2rem !important;
+  left: 4rem !important;
+}
+
+html.is-mobile .footer,
+html.is-tablet .footer {
+  height: 100dvh !important;
+}
+
+/* Compact layout for mobile forced states */
+html.is-mobile .about {
+  padding: 8vh 1.5rem 8vh !important;
+}
+html.is-mobile .projects {
+  padding: 8vh 0 8vh !important;
+}
+html.is-mobile .projects-list {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+html.is-mobile .skills-left {
+  padding: 6vh 1.5rem 2vh !important;
+}
+html.is-mobile .skills-text {
+  font-size: clamp(1.4rem, 5vw, 1.8rem) !important;
+}
+html.is-mobile .skills-right {
+  padding: 0 1.5rem 8vh !important;
+}
+html.is-mobile .agency-left {
+  padding: 6vh 1.5rem 2vh !important;
+}
+html.is-mobile .agency-title {
+  font-size: clamp(2rem, 8vw, 3rem) !important;
+}
+html.is-mobile .agency-right {
+  padding: 0 1.5rem 8vh !important;
+}
+html.is-mobile .contact {
+  padding: 8vh 1.5rem 8vh !important;
+}
+html.is-mobile .contact-title {
+  font-size: clamp(3rem, 12vw, 4.5rem) !important;
+  margin-bottom: 2rem !important;
+}
+html.is-mobile .contact-dispo {
+  width: 100% !important;
+  margin-bottom: 2rem !important;
+}
+html.is-mobile .contact-bottom {
+  margin-top: 3rem !important;
+}
+html.is-mobile .detail-info {
+  padding: 5rem 1.5rem 2rem !important;
+}
+html.is-mobile .detail-gallery-wrap {
+  padding: 0 1.5rem 3rem !important;
+}
+html.is-mobile .detail-back {
+  top: 1.5rem !important;
+  left: 1.5rem !important;
+}
+html.is-mobile .footer-name-luke {
+  line-height: 1.0 !important;
+}
+html.is-mobile .footer-name {
+  bottom: 1.5rem !important;
+}
+
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

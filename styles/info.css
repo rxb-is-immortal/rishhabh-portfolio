@@ -241,20 +241,95 @@ body {
 }
 
 @media (max-width: 1024px) {
+  html, body {
+    overflow-y: auto !important;
+    height: auto !important;
+  }
   .info-main {
+    position: relative !important;
+    height: auto !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
     grid-template-columns: 1fr;
-    padding: clamp(5rem, 10vh, 7rem) 1.5rem 8rem;
+    padding: clamp(5rem, 10vh, 7rem) 1.5rem 4rem;
     gap: 1.5rem;
-    align-content: start;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
   }
   .info-photo-wrap { max-height: 40vh; }
   .info-skills { grid-template-columns: repeat(2, 1fr); }
-  .info-bottom { left: 1.5rem; right: 1.5rem; }
-  .page-title, .back-btn { top: 1.5rem; }
+  .info-bottom {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    margin-top: auto !important;
+    padding: 3rem 0 2rem !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+  .page-title, .back-btn { position: absolute !important; top: 1.5rem; }
   .page-title { left: 1.5rem; max-width: calc(100vw - 200px); }
   .back-btn { right: 1.5rem; }
+}
+
+/* Forced Viewport Class support fallback overrides (applies forced styles on desktop) */
+html.is-mobile, html.is-tablet,
+html.is-mobile body, html.is-tablet body {
+  overflow-y: auto !important;
+  height: auto !important;
+}
+html.is-mobile .info-main,
+html.is-tablet .info-main {
+  position: relative !important;
+  height: auto !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  grid-template-columns: 1fr !important;
+  padding: clamp(5rem, 10vh, 7rem) 1.5rem 4rem !important;
+  gap: 1.5rem !important;
+}
+html.is-mobile .info-photo-wrap,
+html.is-tablet .info-photo-wrap {
+  max-height: 40vh !important;
+}
+html.is-mobile .info-skills,
+html.is-tablet .info-skills {
+  grid-template-columns: 1fr !important;
+}
+html.is-tablet .info-skills {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+html.is-mobile .info-bottom,
+html.is-tablet .info-bottom {
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  margin-top: auto !important;
+  padding: 3rem 0 2rem !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+}
+html.is-mobile .page-title,
+html.is-tablet .page-title,
+html.is-mobile .back-btn,
+html.is-tablet .back-btn {
+  position: absolute !important;
+  top: 1.5rem !important;
+}
+html.is-mobile .page-title,
+html.is-tablet .page-title {
+  left: 1.5rem !important;
+  max-width: calc(100vw - 200px) !important;
+}
+html.is-mobile .back-btn,
+html.is-tablet .back-btn {
+  right: 1.5rem !important;
 }
 
 @media (max-width: 480px) {
