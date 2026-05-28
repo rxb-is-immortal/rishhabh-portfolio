@@ -1,0 +1,295 @@
+/* ─── THEME VARIABLES ────────────────────────────────────────────────────── */
+
+:root {
+  --accent:       #ff1e00;
+  --accent-rgb:   255, 30, 0;
+  --accent-glow:  rgba(255, 30, 0, 0.35);
+  --accent-muted: rgba(255, 30, 0, 0.18);
+}
+
+:root[data-theme="purple"] {
+  --accent:       #a855f7;
+  --accent-rgb:   168, 85, 247;
+  --accent-glow:  rgba(168, 85, 247, 0.35);
+  --accent-muted: rgba(168, 85, 247, 0.18);
+}
+
+:root[data-theme="green"] {
+  --accent:       #22c55e;
+  --accent-rgb:   34, 197, 94;
+  --accent-glow:  rgba(34, 197, 94, 0.35);
+  --accent-muted: rgba(34, 197, 94, 0.18);
+}
+
+:root[data-theme="cyan"] {
+  --accent:       #06b6d4;
+  --accent-rgb:   6, 182, 212;
+  --accent-glow:  rgba(6, 182, 212, 0.35);
+  --accent-muted: rgba(6, 182, 212, 0.18);
+}
+
+:root[data-theme="offwhite"] {
+  --accent:       #e8e0d0;
+  --accent-rgb:   232, 224, 208;
+  --accent-glow:  rgba(232, 224, 208, 0.3);
+  --accent-muted: rgba(232, 224, 208, 0.15);
+}
+
+
+/* ─── NAME DOT — accent fullstop after "Rishabh." ───────────────────────── */
+
+.name-dot,
+.footer-name-dot,
+#preloader-dot {
+  color: var(--accent);
+  transition: color 0.4s ease;
+}
+
+
+/* ─── HERO BACKGROUND TINT ───────────────────────────────────────────────── */
+
+/*
+  Overlays a radial gradient on the WebGL hero canvas.
+  mix-blend-mode: hue  → replaces only the hue from the WebGL output,
+  keeping all the dramatic lighting/luminosity intact.
+  Transition provides a smooth animated color shift on theme change.
+*/
+.hero-tint {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background: radial-gradient(
+    ellipse 80% 70% at 70% 40%,
+    rgba(var(--accent-rgb), 0.88) 0%,
+    rgba(var(--accent-rgb), 0.45) 40%,
+    rgba(var(--accent-rgb), 0.0) 75%
+  );
+
+  mix-blend-mode: hue;
+  transition: background 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Off-white can't use hue blend (near-grey), switch to color blend */
+}
+
+/* For off-white: use a softer color blend so the near-grey still tints */
+:root[data-theme="offwhite"] .hero-tint {
+  mix-blend-mode: soft-light;
+  background: radial-gradient(
+    ellipse 80% 70% at 70% 40%,
+    rgba(232, 224, 208, 0.6) 0%,
+    rgba(232, 224, 208, 0.25) 50%,
+    rgba(232, 224, 208, 0.0) 75%
+  );
+}
+
+
+/* ─── THEME SWITCHER WIDGET ──────────────────────────────────────────────── */
+
+.theme-switcher {
+  position: fixed;
+  left: 1.6rem;
+  bottom: 1.6rem;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  pointer-events: auto;
+}
+
+/* Collapsed pill trigger */
+.theme-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(18, 18, 18, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 0.42rem 0.9rem 0.42rem 0.55rem;
+  cursor: pointer;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  user-select: none;
+}
+
+.theme-trigger:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+.theme-trigger-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+  flex-shrink: 0;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.theme-trigger-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.theme-trigger:hover .theme-trigger-label {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Panel */
+.theme-panel {
+  position: absolute;
+  bottom: calc(100% + 0.6rem);
+  left: 0;
+  background: rgba(12, 12, 12, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,255,255,0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-width: 160px;
+  pointer-events: auto;
+
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  transform-origin: bottom left;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.theme-panel.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.theme-panel-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.theme-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  text-align: left;
+  transition: background 0.2s ease;
+  position: relative;
+}
+
+.theme-option:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.theme-option.active {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.theme-option-swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.theme-option:hover .theme-option-swatch,
+.theme-option.active .theme-option-swatch {
+  transform: scale(1.15);
+}
+
+.theme-option.active .theme-option-swatch {
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.theme-option-swatch[data-swatch="red"]      { background: #ff1e00; box-shadow: 0 0 10px rgba(255,30,0,0.5); }
+.theme-option-swatch[data-swatch="purple"]   { background: #a855f7; box-shadow: 0 0 10px rgba(168,85,247,0.5); }
+.theme-option-swatch[data-swatch="green"]    { background: #22c55e; box-shadow: 0 0 10px rgba(34,197,94,0.5); }
+.theme-option-swatch[data-swatch="cyan"]     { background: #06b6d4; box-shadow: 0 0 10px rgba(6,182,212,0.5); }
+.theme-option-swatch[data-swatch="offwhite"] { background: #e8e0d0; box-shadow: 0 0 10px rgba(232,224,208,0.4); }
+
+.theme-option-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  transition: color 0.2s ease;
+  flex: 1;
+}
+
+.theme-option:hover .theme-option-name,
+.theme-option.active .theme-option-name {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Active checkmark */
+.theme-option-check {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.theme-option.active .theme-option-check {
+  opacity: 1;
+}
+
+.theme-option-check svg {
+  width: 100%;
+  height: 100%;
+  stroke: rgba(255, 255, 255, 0.7);
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Hide during core transition */
+body.is-transitioning .theme-switcher {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .theme-switcher {
+    left: 1rem;
+    bottom: 1rem;
+  }
+}
