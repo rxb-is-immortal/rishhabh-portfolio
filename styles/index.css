@@ -2383,7 +2383,6 @@ html.is-tablet .contact-title {
   position: relative !important;
   top: auto !important;
   left: auto !important;
-  transform: none !important;
   text-align: center !important;
   margin-bottom: 3rem !important;
   font-size: clamp(3rem, 10vw, 5rem) !important;

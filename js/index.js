@@ -1485,13 +1485,12 @@ function setupProjectsSection() {
       });
     });
 
-    if (isMobileViewport()) return;
-
+    var isMob = isMobileViewport();
     var contactBg = document.getElementById('contact-bg');
 
     ScrollTrigger.create({
       trigger: '#contact',
-      start: 'top bottom',
+      start: isMob ? 'top 85%' : 'top bottom',
       endTrigger: '#footer-transition',
       end: 'bottom bottom',
       onEnter: function () { blobWrap.style.visibility = 'visible'; contactBg.style.display = 'block'; },
@@ -1504,9 +1503,10 @@ function setupProjectsSection() {
     var tl = gsap.timeline({
       scrollTrigger: {
         trigger: '#contact',
-        start: 'top bottom',
-        end: 'bottom bottom',
-        scrub: true,
+        start: isMob ? 'top 85%' : 'top bottom',
+        end: isMob ? 'bottom 85%' : 'bottom bottom',
+        scrub: isMob ? false : true,
+        toggleActions: isMob ? "play none none reverse" : undefined,
       }
     });
 
