@@ -1485,12 +1485,31 @@ function setupProjectsSection() {
       });
     });
 
-    var isMob = isMobileViewport();
+    if (isMobileViewport()) {
+      // High-performance mobile scroll reveal without fixed overlays or scrub lag
+      gsap.fromTo([title, dispo, dispo2, socials, mailEl],
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '#contact',
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+      return;
+    }
+
     var contactBg = document.getElementById('contact-bg');
 
     ScrollTrigger.create({
       trigger: '#contact',
-      start: isMob ? 'top 85%' : 'top bottom',
+      start: 'top bottom',
       endTrigger: '#footer-transition',
       end: 'bottom bottom',
       onEnter: function () { blobWrap.style.visibility = 'visible'; contactBg.style.display = 'block'; },
@@ -1503,10 +1522,9 @@ function setupProjectsSection() {
     var tl = gsap.timeline({
       scrollTrigger: {
         trigger: '#contact',
-        start: isMob ? 'top 85%' : 'top bottom',
-        end: isMob ? 'bottom 85%' : 'bottom bottom',
-        scrub: isMob ? false : true,
-        toggleActions: isMob ? "play none none reverse" : undefined,
+        start: 'top bottom',
+        end: 'bottom bottom',
+        scrub: true,
       }
     });
 
