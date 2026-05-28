@@ -2125,13 +2125,6 @@ a.chr-hover {
     min-height: auto !important;
     height: auto !important;
     padding: 8vh 1.5rem 8vh !important;
-    background: #f0f0f0 !important;
-    color: #0a0a0a !important;
-  }
-  .contact-socials,
-  .contact-mail {
-    clip-path: none !important;
-    pointer-events: auto !important;
   }
   .contact-title {
     font-size: clamp(3rem, 12vw, 4.5rem) !important;
@@ -2379,15 +2372,6 @@ html.is-tablet .contact {
   min-height: auto !important;
   height: auto !important;
   padding: 8vh 4rem 8vh !important;
-  background: #f0f0f0 !important;
-  color: #0a0a0a !important;
-}
-html.is-mobile .contact-socials,
-html.is-tablet .contact-socials,
-html.is-mobile .contact-mail,
-html.is-tablet .contact-mail {
-  clip-path: none !important;
-  pointer-events: auto !important;
 }
 html.is-mobile .contact-pin,
 html.is-tablet .contact-pin {
