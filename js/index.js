@@ -1465,7 +1465,7 @@ function setupProjectsSection() {
     var frameImg2 = document.getElementById('contact-frame-img-2');
     var stTimeline = document.getElementById('scroll-timeline');
     var pctEl = document.getElementById('scroll-pct');
-    if (!blob) return;
+    if (!blob || isMobileViewport()) return;
 
     
     document.querySelectorAll('[data-chr-contact]').forEach(function (el) {
@@ -1892,6 +1892,7 @@ function setupProjectsSection() {
 
     
     var contactPin = document.getElementById('contact-pin');
+    if (!contactPin || isMobileViewport()) return;
     var contactBlobWrap = document.getElementById('contact-blob-wrap');
     var contactBgEl = document.getElementById('contact-bg');
     var contactSection = document.getElementById('contact');

@@ -38,7 +38,12 @@ var PROJECTS = [
 
     function measureCube() {
       var vp = document.getElementById('cube-viewport');
-      halfH = vp.offsetHeight / 2;
+      if (!vp) return;
+      var h = vp.offsetHeight;
+      if (!h || h <= 0) {
+        h = Math.min(window.innerHeight * 0.8, 800); // match CSS min(80vh, 800px)
+      }
+      halfH = h / 2;
       for (var i = 0; i < 4; i++) {
         faces[i].style.transform = 'rotateX(' + BASE_ANGLES[i] + 'deg) translateZ(' + halfH + 'px)';
       }
@@ -490,11 +495,19 @@ var PROJECTS = [
       syncFaces(rotStep);
     });
 
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(playIntro);
-    } else {
-      window.addEventListener('load', playIntro);
+    var introPlayed = false;
+    function safePlayIntro() {
+      if (introPlayed) return;
+      introPlayed = true;
+      playIntro();
     }
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(safePlayIntro);
+    } else {
+      window.addEventListener('load', safePlayIntro);
+    }
+    setTimeout(safePlayIntro, 800);
 
     window.addEventListener('pageshow', function(e) {
       isLeavingWithFade = false;
