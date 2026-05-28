@@ -351,6 +351,13 @@ a.chr-hover {
 }
 
 @media (max-width: 768px) {
+  .hero-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    bottom: 2rem;
+  }
+
   .hero-bar-left {
     display: none;
   }
@@ -359,7 +366,9 @@ a.chr-hover {
     position: static;
     transform: none;
     display: flex;
-    gap: 0.8rem;
+    justify-content: center;
+    width: 100%;
+    gap: 1rem;
   }
 
   .hero-bar-center .sep {
@@ -368,7 +377,9 @@ a.chr-hover {
 
   .hero-bar-right {
     display: flex;
-    gap: 1.2rem;
+    justify-content: center;
+    width: 100%;
+    gap: 1.5rem;
   }
 }
 

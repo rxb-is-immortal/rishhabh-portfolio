@@ -220,7 +220,17 @@ function stopIntroNameAnchor() {
 
 window.addEventListener('resize', refreshIntroNameAnchor);
 
-const master = gsap.timeline({ delay: 0.2 });
+const master = gsap.timeline({ delay: 0.2, paused: true });
+
+function playIntroTimeline() {
+  master.play();
+}
+
+if (localStorage.getItem('user-device-view')) {
+  playIntroTimeline();
+} else {
+  window.addEventListener('deviceSelected', playIntroTimeline, { once: true });
+}
 
 master
   

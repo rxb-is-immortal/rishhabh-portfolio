@@ -3,7 +3,7 @@
 <head>
   <meta name="google-site-verification" content="DuKMiQVUXng39V3PKaF0IeQ_YtEvV-UekGxwb4DNcLs" />
   <meta charset="UTF-8">
-  <script>!function(){var t=localStorage.getItem('portfolio-theme');if(t&&t!=='red')document.documentElement.setAttribute('data-theme',t);var isTouch=('ontouchstart' in window)||(navigator.maxTouchPoints>0);var isMobile=/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)||isTouch;document.documentElement.classList.add(isMobile?'is-mobile':'is-desktop')}()</script>
+  <script>!function(){var t=localStorage.getItem('portfolio-theme');if(t&&t!=='red')document.documentElement.setAttribute('data-theme',t);var choice=localStorage.getItem('user-device-view');if(choice){document.documentElement.classList.add('is-'+choice)}else{var isTouch=('ontouchstart' in window)||(navigator.maxTouchPoints>0);var isMobile=/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)||isTouch;document.documentElement.classList.add(isMobile?'is-mobile':'is-desktop')}}()</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rishabh's Portfolio</title>
   <meta name="description" content="Cinematic Video Editor, VFX Learner, and Creative Developer portfolio. Discover my video editing projects and creative tech workflows.">
@@ -441,6 +441,7 @@
     </div>
   </section>
 
+  <script src="js/device-detector.js"></script>
   <script defer src="js/i18n.js"></script>
   <script defer src="js/core-renderer.js"></script>
   <script defer src="js/hero-project.js"></script>

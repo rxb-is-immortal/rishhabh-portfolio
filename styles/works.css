@@ -276,11 +276,11 @@
       .face-content.layout-left,
       .face-content.layout-right { flex-direction: column; }
       .face-cover { width: 100%; height: 60%; }
-      .face-info { width: 100%; height: 40%; padding: 1.2rem; }
+      .face-info { width: 100%; height: 40%; padding: 1.2rem; overflow-y: auto; }
       .layout-left .face-name { top: 1rem; right: 1rem; font-size: clamp(1.2rem, 5vw, 2rem); }
       .layout-right .face-name { top: 1rem; left: 1rem; font-size: clamp(1.2rem, 5vw, 2rem); }
       .face-desc { font-size: clamp(0.85rem, 2.8vw, 1.1rem); }
-      .page-title { top: 1.5rem; left: 1.5rem; font-size: clamp(1.8rem, 7vw, 3rem); }
+      .page-title { top: 1.5rem; left: 1.5rem; font-size: clamp(1.8rem, 7vw, 3rem); max-width: calc(100vw - 200px); }
       .back-btn { top: 1.5rem; right: 1.5rem; }
       .scroll-hint { bottom: 1.5rem; left: 1.5rem; }
     }

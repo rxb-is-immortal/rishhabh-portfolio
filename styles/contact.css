@@ -240,19 +240,20 @@ body {
   color: rgba(255,255,255,0.4);
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
   .info-main {
     grid-template-columns: 1fr;
-    padding: clamp(5rem, 10vh, 7rem) 1.5rem 5rem;
+    padding: clamp(5rem, 10vh, 7rem) 1.5rem 8rem;
     gap: 1.5rem;
     align-content: start;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .info-photo-wrap { max-height: 40vh; }
   .info-skills { grid-template-columns: repeat(2, 1fr); }
   .info-bottom { left: 1.5rem; right: 1.5rem; }
   .page-title, .back-btn { top: 1.5rem; }
-  .page-title { left: 1.5rem; }
+  .page-title { left: 1.5rem; max-width: calc(100vw - 200px); }
   .back-btn { right: 1.5rem; }
 }
 
